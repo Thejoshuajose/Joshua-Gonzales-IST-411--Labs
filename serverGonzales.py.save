@@ -1,0 +1,91 @@
+#Project: Lab 5 Client and Server Using Netwworking Sockets
+#Purpose Details: To Learn how clients connect to servers using Networking
+#Course: IST411
+#Author: Joshua Gonzales
+#Date Developed: 9/26/24
+#Last Date Changed: 9/26/24
+
+#Server
+
+import sys
+import json
+import urllib.request
+import socket
+
+
+# Project: Lab 5 Client and Server Using Networking Sockets
+# Purpose Details: To learn how clients connect to servers using networking
+# Course: IST 411
+# Author: Joe Oakes
+# Date Developed:
+# Last Date Changed:
+# Rev:
+
+import socket
+import json
+
+def start_server():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('0.0.0.0', 8080))  # Listening on port 8080
+    server_socket.listen(1)  # Allow one connection
+    print("Server is listening on port 8080...")
+    
+    try:
+        while True:
+# Project: Lab 5 Client and Server Using Networking Sockets
+# Purpose Details: To learn how clients connect to servers using networking
+# Course: IST 411
+# Author: Joe Oakes
+# Date Developed:
+# Last Date Changed:
+# Rev:
+
+import socket
+import json
+
+def start_server():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('0.0.0.0', 8080))  # Listening on port 8080
+    server_socket.listen(1)  # Allow one connection
+    print("Server is listening on port 8080...")
+    
+    try:
+        while True:
+            clientsocket, address = server_socket.accept()
+            print(f"Connection from {address} has been established!")
+            
+            # Receive data from client
+            data = clientsocket.recv(1024)
+            if data:
+                json_payload = data.decode('utf-8')
+                print(f"Received JSON payload: {json_payload}")
+            
+            clientsocket.close()
+    except KeyboardInterrupt:
+        print("\nServer shutting down.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        server_socket.close()
+
+if __name__ == "__main__":
+    start_server()
+            clientsocket, address = server_socket.accept()
+            print(f"Connection from {address} has been established!")
+            
+            # Receive data from client
+            data = clientsocket.recv(1024)
+            if data:
+                json_payload = data.decode('utf-8')
+                print(f"Received JSON payload: {json_payload}")
+            
+            clientsocket.close()
+    except KeyboardInterrupt:
+        print("\nServer shutting down.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        server_socket.close()
+
+if __name__ == "__main__":
+    start_server()
